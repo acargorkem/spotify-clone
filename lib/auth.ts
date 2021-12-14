@@ -26,3 +26,8 @@ export const validateRoute = (handler) => {
     return handler(req, res, user);
   };
 };
+
+export const validateToken = (token) => {
+  const user = jwt.verify(token, "itsasecret");
+  return user;
+};
