@@ -1,6 +1,9 @@
 import jwt from 'jsonwebtoken'
 import { NextApiRequest, NextApiResponse } from 'next'
 import prisma from './prisma'
+import baseConfig from './baseConfig'
+
+const { secret } = baseConfig
 
 export const validateRoute = (handler) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
@@ -12,7 +15,7 @@ export const validateRoute = (handler) => {
     }
     let user
     try {
-      const { id } = jwt.verify(token, 'itsasecret')
+      const { id } = jwt.verify(token, secret)
       user = await prisma.user.findUnique({
         where: { id },
       })
@@ -28,6 +31,6 @@ export const validateRoute = (handler) => {
 }
 
 export const validateToken = (token) => {
-  const user = jwt.verify(token, 'itsasecret')
+  const user = jwt.verify(token, secret)
   return user
 }

@@ -3,6 +3,9 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import cookie from 'cookie'
 import prisma from '../../lib/prisma'
+import baseConfig from '../../lib/baseConfig'
+
+const { secret } = baseConfig
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { email, password } = req.body
@@ -20,7 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         email: user.email,
         time: Date.now(),
       },
-      'itsasecret',
+      secret,
       { expiresIn: '8h' }
     )
 
