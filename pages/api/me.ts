@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../lib/prisma";
-import { validateRoute } from "../../lib/auth";
+import { NextApiRequest, NextApiResponse } from 'next'
+import prisma from '../../lib/prisma'
+import { validateRoute } from '../../lib/auth'
 
 export default validateRoute(
   async (req: NextApiRequest, res: NextApiResponse, user) => {
@@ -8,8 +8,8 @@ export default validateRoute(
       where: {
         userId: user.id,
       },
-    });
+    })
 
-    res.json({ ...user, playlistsCount });
+    res.json({ ...user, playlistsCount })
   }
-);
+)

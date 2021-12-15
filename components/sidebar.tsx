@@ -1,5 +1,5 @@
-import NextImage from "next/image";
-import NextLink from "next/link";
+import NextImage from 'next/image'
+import NextLink from 'next/link'
 import {
   Box,
   List,
@@ -8,37 +8,37 @@ import {
   LinkBox,
   LinkOverlay,
   Divider,
-} from "@chakra-ui/layout";
+} from '@chakra-ui/layout'
 import {
   MdHome,
   MdLibraryMusic,
   MdPlaylistAdd,
   MdSearch,
   MdFavorite,
-} from "react-icons/md";
-import { usePlaylist } from "../lib/hooks";
+} from 'react-icons/md'
+import { usePlaylist } from '../lib/hooks'
 
 const navMenu = [
-  { name: "Home", icon: MdHome, route: "/" },
-  { name: "Search", icon: MdSearch, route: "/search" },
-  { name: "Your Library", icon: MdLibraryMusic, route: "/library" },
-];
+  { name: 'Home', icon: MdHome, route: '/' },
+  { name: 'Search', icon: MdSearch, route: '/search' },
+  { name: 'Your Library', icon: MdLibraryMusic, route: '/library' },
+]
 
 const musicMenu = [
   {
-    name: "Create Playlist",
+    name: 'Create Playlist',
     icon: MdPlaylistAdd,
-    route: "/",
+    route: '/',
   },
   {
-    name: "Favorites",
+    name: 'Favorites',
     icon: MdFavorite,
-    route: "/favorites",
+    route: '/favorites',
   },
-];
+]
 
 const Sidebar = () => {
-  const { playlists } = usePlaylist();
+  const { playlists } = usePlaylist()
   return (
     <Box
       width="100%"
@@ -99,7 +99,7 @@ const Sidebar = () => {
                 <LinkBox>
                   <NextLink
                     href={{
-                      pathname: "/playlist/[id]",
+                      pathname: '/playlist/[id]',
                       query: { id: playlist.id },
                     }}
                     passHref
@@ -113,7 +113,7 @@ const Sidebar = () => {
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

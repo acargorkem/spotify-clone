@@ -1,14 +1,14 @@
-import { Box, Text, Flex } from "@chakra-ui/layout";
-import { Image } from "@chakra-ui/react";
-import GradientLayout from "../components/gradientLayout";
-import { useMe } from "../lib/hooks";
-import prisma from "../lib/prisma";
+import { Box, Text, Flex } from '@chakra-ui/layout'
+import { Image } from '@chakra-ui/react'
+import GradientLayout from '../components/gradientLayout'
+import { useMe } from '../lib/hooks'
+import prisma from '../lib/prisma'
 
 const Home = ({ artists }) => {
-  const { user, isLoading } = useMe();
+  const { user, isLoading } = useMe()
 
   if (isLoading) {
-    return null;
+    return null
   }
 
   return (
@@ -45,15 +45,15 @@ const Home = ({ artists }) => {
         </Flex>
       </Box>
     </GradientLayout>
-  );
-};
+  )
+}
 
 export const getServerSideProps = async () => {
-  const artists = await prisma.artist.findMany({});
+  const artists = await prisma.artist.findMany({})
 
   return {
     props: { artists },
-  };
-};
+  }
+}
 
-export default Home;
+export default Home
