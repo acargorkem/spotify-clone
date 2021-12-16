@@ -4,7 +4,6 @@ import {
   Box,
   List,
   ListItem,
-  ListIcon,
   LinkBox,
   LinkOverlay,
   Divider,
@@ -16,6 +15,7 @@ import {
   MdSearch,
   MdFavorite,
 } from 'react-icons/md'
+import Navbar from './navbar'
 import { usePlaylist } from '../lib/hooks'
 
 const navMenu = [
@@ -39,6 +39,7 @@ const musicMenu = [
 
 const Sidebar = () => {
   const { playlists } = usePlaylist()
+
   return (
     <Box
       width="100%"
@@ -52,44 +53,10 @@ const Sidebar = () => {
           <NextImage src="/logo.svg" height={60} width={120} />
         </Box>
         <Box marginBottom="20px">
-          <List spacing={2}>
-            {navMenu.map((menu) => (
-              <ListItem key={menu.name} paddingX="20px" fontSize="16px">
-                <LinkBox>
-                  <NextLink href={menu.route} passHref>
-                    <LinkOverlay>
-                      <ListIcon
-                        as={menu.icon}
-                        color="white"
-                        marginRight="20px"
-                      />
-                      {menu.name}
-                    </LinkOverlay>
-                  </NextLink>
-                </LinkBox>
-              </ListItem>
-            ))}
-          </List>
+          <Navbar menus={navMenu} />
         </Box>
-        <Box marginTop="20px">
-          <List spacing={2}>
-            {musicMenu.map((menu) => (
-              <ListItem key={menu.name} paddingX="20px" fontSize="16px">
-                <LinkBox>
-                  <NextLink href={menu.route} passHref>
-                    <LinkOverlay>
-                      <ListIcon
-                        as={menu.icon}
-                        color="white"
-                        marginRight="20px"
-                      />
-                      {menu.name}
-                    </LinkOverlay>
-                  </NextLink>
-                </LinkBox>
-              </ListItem>
-            ))}
-          </List>
+        <Box marginY="20px">
+          <Navbar menus={musicMenu} />
         </Box>
         <Divider bg="gray.800" />
         <Box height="66%" overflowY="auto" paddingY="20px">
